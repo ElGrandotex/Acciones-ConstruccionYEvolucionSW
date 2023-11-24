@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccionesService } from 'src/app/acciones/services/acciones.service';
 
 @Component({
   selector: 'shared-sidebar',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
-  constructor(){}
+  constructor( private accionService: AccionesService){}
+
+  get busquedas(){
+    return this.accionService.tagsHistory;
+  }
 }

@@ -1,11 +1,12 @@
 <div class="bg-dark border-right p-3" id="sidebar">
-  <h3 class="text-light">Acciones</h3>
-  <h6 class="text-light">Jose Verdezoto</h6>
+  <h2 class="text-light text-center">Acciones</h2>
+  <h5 class="text-light">Jose Verdezoto</h5>
   <hr class="text-white">
 
   <div class="list-group list-reset">
-    <button class="list-group-item list-group-item-action">
-      MENU
+    <h6 class="text-light">Busquedas Recientes</h6>
+    <button *ngFor="let busqueda of busquedas" class="list-group-item list-group-item-action">
+      {{ busqueda | uppercase }}
     </button>
   </div>
 </div>
