@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AccionesModule } from './acciones/acciones.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AccionesModule } from './acciones/acciones.module';
     BrowserModule,
     SharedModule,
     AccionesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,7 @@ export class AccionesService {
   private _tagsHistory: string[] = [];
   private apiKey: string = 'PYCLROWFHP6YOJ3A';
   private serviceUrl: string = 'https://www.alphavantage.co';
+  private function: string = 'GLOBAL_QUOTE';
 
   constructor( private http: HttpClient) { }
 
@@ -24,21 +25,21 @@ export class AccionesService {
     }
 
     this._tagsHistory.unshift(tag);
-    this._tagsHistory = this._tagsHistory.splice(0,10);
+    this._tagsHistory = this._tagsHistory.splice(0,5);
   }
 
-  searchTag(tag: string): void{
+  apiPeticion(tag: string): void{
     if(tag.length === 0) return;
     this.organizeHistory(tag);
 
     const params = new HttpParams()
-    .set('function', tag)
-    .set('limit', 15)
-    .set('api_key', this.apiKey)
+    .set('function', this.function)
+    .set('symbol', tag)
+    .set('apikey', this.apiKey)
 
     console.log(params);
 
-    this.http.get(`${ this.serviceUrl}/search`, { params: params })
+    this.http.get(`${ this.serviceUrl}/query`, { params: params })
       .subscribe( resp => {
         console.log(resp);
       });

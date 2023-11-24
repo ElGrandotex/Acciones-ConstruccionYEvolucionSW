@@ -1,4 +1,5 @@
 import { Component,ViewChild,ElementRef } from '@angular/core';
+import { AccionesService } from '../../services/acciones.service';
 
 @Component({
   selector: 'acc-search-box',
@@ -10,10 +11,12 @@ export class SearchBoxComponent {
   @ViewChild('txtTagInput')
   public tagInput!: ElementRef<HTMLInputElement>;
 
-  constructor() {}
+  constructor(private accionesService: AccionesService) {}
 
   searchTag(){
-
+    const symbol = this.tagInput.nativeElement.value;
+    this.accionesService.apiPeticion(symbol);
+    this.tagInput.nativeElement.value = '';
   }
 
 }
