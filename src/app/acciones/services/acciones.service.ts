@@ -1,11 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Accion, Busqueda } from '../interfaz/accion.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccionesService {
 
+  public listaAcciones: Accion = {
+    "01. symbol":             '',
+    "02. open":               '',
+    "03. high":               '',
+    "04. low":                '',
+    "05. price":              '',
+    "06. volume":             '',
+    "07. latest trading day": '',
+    "08. previous close":     '',
+    "09. change":             '',
+    "10. change percent":     '',
+  };
+
+  public mostradorTabla = false;
+  public valor = 0;
   private _tagsHistory: string[] = [];
   private apiKey: string = 'PYCLROWFHP6YOJ3A';
   private serviceUrl: string = 'https://www.alphavantage.co';
@@ -37,12 +53,16 @@ export class AccionesService {
     .set('symbol', tag)
     .set('apikey', this.apiKey)
 
-    console.log(params);
 
-    this.http.get(`${ this.serviceUrl}/query`, { params: params })
+    this.http.get<Busqueda>(`${ this.serviceUrl}/query`, { params: params })
       .subscribe( resp => {
-        console.log(resp);
+        this.listaAcciones = resp['Global Quote'];
+        this.mostradorTabla = true;
       });
+  }
 
+  calcularCompra(volumen:number){
+    this.listaAcciones['05. price'] = '25.03'
+    this.valor = parseFloat(this.listaAcciones['05. price']) * volumen;
   }
 }
