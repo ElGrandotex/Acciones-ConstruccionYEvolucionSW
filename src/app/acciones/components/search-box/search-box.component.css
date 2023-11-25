@@ -1,0 +1,19 @@
+.color{
+  background-color: #6a8595;
+  border: none;
+}
+
+.color::placeholder {
+  color: #ccd3d9;
+}
+
+.textos{
+  color: #2b4c5d;
+  text-shadow: 0 0 1px #ccd3d9;
+}
+
+.color:focus {
+  color: #ccd3d9;
+  outline: none;
+  box-shadow: 0 0 5px white;
+}
