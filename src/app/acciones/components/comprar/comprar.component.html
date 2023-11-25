@@ -1,0 +1,17 @@
+<div *ngIf="mostrarCompra">
+<div class="container contenedor p-4">
+  <input
+    type="number"
+    class="form-control color"
+    placeholder="Volumen a comprar"
+    #volumen
+  >
+  <div class="p-4">
+    <button (click)="comprar()" class="textos">
+      Comprar
+    </button>
+  </div>
+</div>
+
+<acc-lista-compra></acc-lista-compra>
+</div>

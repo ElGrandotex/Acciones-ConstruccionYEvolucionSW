@@ -1,0 +1,32 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input{
+  width: fit-content;
+}
+
+.color{
+  background-color: #6a8595;
+  border: none;
+}
+
+.color::placeholder {
+  color: #ccd3d9;
+}
+
+.textos{
+  color: #ccd3d9;
+  background-color: #273f4b;
+  border-radius: 13px;
+  border: none;
+  height: 40px;
+}
+
+.color:focus {
+  color: #ccd3d9;
+  outline: none;
+  box-shadow: 0 0 5px white;
+}
