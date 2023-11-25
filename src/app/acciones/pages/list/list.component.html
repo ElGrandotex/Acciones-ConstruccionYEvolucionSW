@@ -1,1 +1,49 @@
-<p>TABLA</p>
+<div class="container contenedor">
+  <table class="custom-table table-bordered">
+    <tbody class="text-center textos">
+      <tr>
+        <td><strong>{{nombreDatos[0]}}</strong></td>
+        <td>{{listaAcciones['01. symbol']}}</td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>{{nombreDatos[1]}}</strong></td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[2]}}</strong></td>
+        <td>$ {{listaAcciones['02. open'].slice(0,-2)}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[3]}}</strong></td>
+        <td>$ {{listaAcciones['03. high'].slice(0,-2)}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[4]}}</strong></td>
+        <td>$ {{listaAcciones['04. low'].slice(0,-2)}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[5]}}</strong></td>
+        <td>$ {{listaAcciones['05. price'].slice(0,-2)}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[6]}}</strong></td>
+        <td>{{listaAcciones['06. volume']}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[7]}}</strong></td>
+        <td>{{listaAcciones['07. latest trading day']}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[8]}}</strong></td>
+        <td>$ {{listaAcciones['08. previous close'].slice(0,-2)}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[9]}}</strong></td>
+        <td>$ {{listaAcciones['09. change'].slice(0,-2)}}</td>
+      </tr>
+      <tr>
+        <td><strong>{{nombreDatos[10]}}</strong></td>
+        <td>{{listaAcciones['10. change percent']}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

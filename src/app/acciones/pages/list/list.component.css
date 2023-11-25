@@ -1,3 +1,25 @@
-table {
-  width: 100%;
+.custom-table {
+  padding: 20%;
+}
+
+.custom-table td{
+  width: 300px;
+}
+
+.custom-table tr, .custom-table td, .custom-table th {
+  border: none
+}
+
+.custom-table tbody tr {
+  background-color: #ccd3d9;
+}
+
+.textos{
+  color: #2b4c5d;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
