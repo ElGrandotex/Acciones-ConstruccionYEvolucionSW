@@ -1,11 +1,12 @@
-<div class="bg-dark border-right p-3" id="sidebar">
-  <h2 class="text-light text-center">Acciones</h2>
-  <h5 class="text-light">Jose Verdezoto</h5>
-  <hr class="text-white">
+<div class="color border-right p-4" id="sidebar">
+  <h2 class="text-center textos">Acciones</h2>
+  <img src="/assets/EPN.png" alt="EPN" id="imagen">
+  <h5 class="textos">Jose Verdezoto</h5>
+  <hr class="textos">
 
-  <div class="list-group list-reset">
-    <h6 class="text-light">Busquedas Recientes</h6>
-    <button *ngFor="let busqueda of busquedas" class="list-group-item list-group-item-action">
+  <div class="list-group list-reset" *ngIf="mostradorTabla">
+    <h6 class="textos">Busquedas Recientes</h6>
+    <button *ngFor="let busqueda of busquedas" (click)="buscarAnterior(busqueda)" class="boton-color list-group-item list-group-item-action">
       {{ busqueda | uppercase }}
     </button>
   </div>

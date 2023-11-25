@@ -8,9 +8,18 @@ import { AccionesService } from 'src/app/acciones/services/acciones.service';
 })
 export class SidebarComponent {
 
+
   constructor( private accionService: AccionesService){}
 
   get busquedas(){
     return this.accionService.tagsHistory;
+  }
+
+  get mostradorTabla(): boolean{
+    return this.accionService.mostradorTabla;
+  }
+
+  buscarAnterior( valor:string ): void {
+    this.accionService.apiPeticion(valor)
   }
 }

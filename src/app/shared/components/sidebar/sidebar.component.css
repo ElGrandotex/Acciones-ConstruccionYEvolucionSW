@@ -2,3 +2,21 @@
   height: 100vh;
   width: 250px;
 }
+
+.color {
+  background-color: #273f4b;
+}
+
+.boton-color{
+  background-color: #ccd3d9;
+  color: #2b4c5d
+}
+
+.textos{
+  color: #ccd3d9;
+}
+
+#imagen {
+  width: 200px;
+  padding: 10%;
+}
