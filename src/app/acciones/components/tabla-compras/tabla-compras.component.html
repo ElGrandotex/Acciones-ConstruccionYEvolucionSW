@@ -1,0 +1,22 @@
+<div class="container contenedor">
+  <table class="custom-table table-bordered">
+    <tbody class="text-center textos">
+      <tr>
+        <td><strong> Nombre </strong></td>
+        <td><strong> Id </strong></td>
+        <td><strong> Fecha </strong></td>
+        <td><strong> PrecioCompra </strong></td>
+        <td><strong> Volumen </strong></td>
+        <td><strong> Total </strong></td>
+      </tr>
+      <tr *ngFor="let compra of listaComprasRealizadas">
+        <td>{{ compra.Nombre }}</td>
+        <td>{{ compra.Id }}</td>
+        <td>{{ compra.Fecha }}</td>
+        <td>{{ compra.PrecioCompra }}</td>
+        <td>{{ compra.Volumen }}</td>
+        <td>{{ compra.Total }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -5,6 +5,7 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
 import { ListComponent } from './pages/list/list.component';
 import { ComprarComponent } from './components/comprar/comprar.component';
 import { ListaCompraComponent } from './pages/lista-compra/lista-compra.component';
+import { TablaComprasComponent } from './components/tabla-compras/tabla-compras.component';
 
 
 
@@ -14,7 +15,8 @@ import { ListaCompraComponent } from './pages/lista-compra/lista-compra.componen
     SearchBoxComponent,
     ListComponent,
     ComprarComponent,
-    ListaCompraComponent
+    ListaCompraComponent,
+    TablaComprasComponent
   ],
   imports: [
     CommonModule
