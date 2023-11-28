@@ -4,5 +4,5 @@ export interface Compras {
   'Fecha': string;
   'PrecioCompra': string;
   'Volumen': number;
-  'Total': number;
+  'Total': string;
 }

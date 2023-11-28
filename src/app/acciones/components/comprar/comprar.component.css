@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20%;
 }
 
 input{
@@ -32,6 +33,6 @@ input{
 }
 
 .textos {
-  color: #273f4b;
-  size: 100px;
+  color: #2b4c5d;
+  text-shadow: 0 0 1px #ccd3d9;
 }

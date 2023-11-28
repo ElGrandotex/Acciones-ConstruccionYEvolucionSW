@@ -24,12 +24,14 @@ export class ComprarComponent {
       'Id': this.accionesService.id,
       'Nombre': this.accionesService.listaAcciones['01. symbol'],
       'Fecha' : this.accionesService.fechaCompra,
-      'PrecioCompra' : this.accionesService.listaAcciones['05. price'],
-      'Volumen' : parseInt(this.volumen.nativeElement.value),
-      'Total' : this.accionesService.valor
+      'PrecioCompra' : parseFloat(this.accionesService.listaAcciones['05. price']).toFixed(2),
+      'Volumen' : parseFloat(volumen),
+      'Total' : this.accionesService.valor.toFixed(2)
     };
 
     this.accionesService.agregarCompra(nuevaCompra);
+    console.log(nuevaCompra);
+
   }
 
   get mostrarInput(){
@@ -40,4 +42,7 @@ export class ComprarComponent {
     return this.accionesService.mostrarCompra;
   }
 
+  get mostrarRegistro(){
+    return this.accionesService.mostrarRegistro;
+  }
 }

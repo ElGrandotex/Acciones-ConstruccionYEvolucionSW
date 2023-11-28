@@ -16,11 +16,16 @@ export class ListaCompraComponent {
 
   constructor( private accionesService: AccionesService){}
 
-  protected fechaCompra = this.accionesService.fechaCompra;
-  protected id = this.accionesService.id;
+  get id(){
+    return this.accionesService.id;
+  }
+
+  get fechaCompra(){
+    return this.accionesService.fechaCompra;
+  }
 
   get total(){
-    return this.accionesService.valor;
+    return this.accionesService.valor.toFixed(2);
   }
 
 }
