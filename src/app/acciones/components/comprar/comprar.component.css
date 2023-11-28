@@ -17,7 +17,7 @@ input{
   color: #ccd3d9;
 }
 
-.textos{
+.boton{
   color: #ccd3d9;
   background-color: #273f4b;
   border-radius: 13px;
@@ -29,4 +29,9 @@ input{
   color: #ccd3d9;
   outline: none;
   box-shadow: 0 0 5px white;
+}
+
+.textos {
+  color: #273f4b;
+  size: 100px;
 }

@@ -1,17 +1,21 @@
-<div *ngIf="mostrarCompra">
-<div class="container contenedor p-4">
-  <input
-    type="number"
-    class="form-control color"
-    placeholder="Volumen a comprar"
-    #volumen
-  >
-  <div class="p-4">
-    <button (click)="comprar()" class="textos">
-      Comprar
-    </button>
+<div *ngIf="mostrarInput">
+  <div class="container contenedor p-4">
+    <input
+      type="number"
+      class="form-control color"
+      placeholder="Volumen a comprar"
+      #volumen
+    >
+    <div class="p-4">
+      <button (click)="comprar()" class="boton">
+        Comprar
+      </button>
+    </div>
   </div>
 </div>
 
-<acc-lista-compra></acc-lista-compra>
+<div *ngIf="mostrarCompra">
+  <acc-lista-compra></acc-lista-compra>
+  <p class="textos">Compras Realizadas</p>
+  <acc-tabla-compras></acc-tabla-compras>
 </div>
