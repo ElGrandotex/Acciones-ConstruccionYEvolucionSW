@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { AccionesService } from '../../services/acciones.service';
-import { v4 as identificador} from 'uuid'
 
 @Component({
   selector: 'acc-lista-compra',
@@ -14,20 +13,14 @@ export class ListaCompraComponent {
     'Fecha Compra',
     'TOTAL',
   ]
-  protected id: string = identificador();
-  protected fechaActual: Date = new Date();
-  protected anio = this.fechaActual.getFullYear();
-  protected mes = this.fechaActual.getMonth()+1;
-  protected dia = this.fechaActual.getDate();
-  protected hora = this.fechaActual.getHours();
-  protected minuto = this.fechaActual.getMinutes();
-  protected segundo = this.fechaActual.getSeconds();
 
   constructor( private accionesService: AccionesService){}
+
+  protected fechaCompra = this.accionesService.fechaCompra;
+  protected id = this.accionesService.id;
 
   get total(){
     return this.accionesService.valor;
   }
-
 
 }

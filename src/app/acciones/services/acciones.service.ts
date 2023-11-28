@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Accion, Busqueda } from '../interfaz/accion.interface';
+import { Compras } from '../interfaz/compras.interface';
+import { v4 as identificador} from 'uuid'
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,18 @@ export class AccionesService {
   };
 
   public mostradorTabla = false;
+  public mostrarCompra = false;
+  public id: string = identificador();
   public valor = 0;
+  private fechaActual: Date = new Date();
+  private anio = this.fechaActual.getFullYear();
+  private mes = this.fechaActual.getMonth()+1;
+  private dia = this.fechaActual.getDate();
+  private hora = this.fechaActual.getHours();
+  private minuto = this.fechaActual.getMinutes();
+  private segundo = this.fechaActual.getSeconds();
+  public fechaCompra: string = this.dia + '/' + this.mes + '/' + this.anio + ' ' + this.hora + ':' + this.minuto + ':' + this.segundo;
+  public listaCompras: Compras[] = [];
   private _tagsHistory: string[] = [];
   private apiKey: string = 'PYCLROWFHP6YOJ3A';
   private serviceUrl: string = 'https://www.alphavantage.co';
@@ -62,7 +75,12 @@ export class AccionesService {
   }
 
   calcularCompra(volumen:number){
-    this.listaAcciones['05. price'] = '25.03'
     this.valor = parseFloat(this.listaAcciones['05. price']) * volumen;
+    this.valor.toFixed(2);
+    this.mostrarCompra = true;
+  }
+
+  agregarCompra( nuevaCompra: Compras ): void {
+    this.listaCompras.unshift(nuevaCompra);
   }
 }
