@@ -24,18 +24,23 @@ export class AccionesService {
 
   public mostradorTabla = false;
   public mostrarCompra = false;
-  public id: string = identificador();
+  public mostrarRegistro = false;
+
+  public id: string = '';
   public valor = 0;
-  private fechaActual: Date = new Date();
-  private anio = this.fechaActual.getFullYear();
-  private mes = this.fechaActual.getMonth()+1;
-  private dia = this.fechaActual.getDate();
-  private hora = this.fechaActual.getHours();
-  private minuto = this.fechaActual.getMinutes();
-  private segundo = this.fechaActual.getSeconds();
-  public fechaCompra: string = this.dia + '/' + this.mes + '/' + this.anio + ' ' + this.hora + ':' + this.minuto + ':' + this.segundo;
+
+  private anio = 0;
+  private mes = 0;
+  private dia = 0;
+  private hora = 0;
+  private minuto = 0;
+  private segundo = 0;
+
+  public fechaCompra: string = '';
+
   public listaCompras: Compras[] = [];
   private _tagsHistory: string[] = [];
+
   private apiKey: string = 'PYCLROWFHP6YOJ3A';
   private serviceUrl: string = 'https://www.alphavantage.co';
   private function: string = 'GLOBAL_QUOTE';
@@ -44,6 +49,16 @@ export class AccionesService {
 
   get tagsHistory(){
     return [...this._tagsHistory];
+  }
+
+  fechaActual(){
+    const fechaActual: Date = new Date();
+    this.anio = fechaActual.getFullYear();
+    this.mes = fechaActual.getMonth()+1;
+    this.dia = fechaActual.getDate();
+    this.hora = fechaActual.getHours();
+    this.minuto = fechaActual.getMinutes();
+    this.segundo = fechaActual.getSeconds();
   }
 
   private organizeHistory( tag: string){
@@ -75,6 +90,9 @@ export class AccionesService {
   }
 
   calcularCompra(volumen:number){
+    this.fechaActual();
+    this.id = identificador();
+    this.fechaCompra = this.dia + '/' + this.mes + '/' + this.anio + ' ' + this.hora + ':' + this.minuto + ':' + this.segundo;
     this.valor = parseFloat(this.listaAcciones['05. price']) * volumen;
     this.valor.toFixed(2);
     this.mostrarCompra = true;
@@ -82,5 +100,6 @@ export class AccionesService {
 
   agregarCompra( nuevaCompra: Compras ): void {
     this.listaCompras.unshift(nuevaCompra);
+    this.mostrarRegistro = true;
   }
 }
