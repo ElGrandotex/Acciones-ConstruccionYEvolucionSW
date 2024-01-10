@@ -1,5 +1,6 @@
 import { Component,Input } from '@angular/core';
 import { Accion } from '../../interfaz/accion.interface';
+import { AccionesService } from '../../services/acciones.service';
 
 @Component({
   selector: 'acc-list',
@@ -8,6 +9,7 @@ import { Accion } from '../../interfaz/accion.interface';
 })
 export class ListComponent {
 
+  //Campos a mostrar
   protected nombreDatos = [
     'Nombre',
     'Precio',
@@ -22,6 +24,7 @@ export class ListComponent {
     'Porcentaje de Cambio'
   ]
 
+  //Obtener informacion
   @Input()
   public listaAcciones: Accion = {
     "01. symbol":             '',
@@ -36,4 +39,10 @@ export class ListComponent {
     "10. change percent":     '',
   };
 
+    /**
+   * @description
+   * Constructor
+   * @param accionesService Consumo de servicio
+   */
+  constructor( private accionSrv: AccionesService){}
 }

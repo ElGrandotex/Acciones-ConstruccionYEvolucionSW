@@ -1,3 +1,4 @@
+<!-- Ingreso de numero de acciones a comprar -->
 <div *ngIf="mostrarInput">
   <div class="container contenedor p-2">
     <input
@@ -14,7 +15,9 @@
   </div>
 </div>
 
+<!-- Informacion de la compra -->
 <acc-lista-compra *ngIf="mostrarCompra"></acc-lista-compra>
 
+<!-- Lista de compras realizadas -->
 <h5 class="textos p-4" *ngIf="mostrarRegistro">Compras Realizadas</h5>
 <acc-tabla-compras *ngIf="mostrarRegistro"></acc-tabla-compras>

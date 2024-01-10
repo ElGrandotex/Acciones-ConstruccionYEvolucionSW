@@ -8,9 +8,14 @@ import { AccionesService } from '../../services/acciones.service';
 })
 export class TablaComprasComponent {
 
-
+    /**
+   * @description
+   * Constructor
+   * @param accionesService Consumo de servicio
+   */
   constructor( private accionesService: AccionesService){}
 
+  //Listado de compras realizadas
   get listaComprasRealizadas(){
     return this.accionesService.listaCompras;
   }

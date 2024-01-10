@@ -9,6 +9,7 @@ import { v4 as identificador} from 'uuid'
 })
 export class AccionesService {
 
+  //Campos de la lista de acciones
   public listaAcciones: Accion = {
     "01. symbol":             '',
     "02. open":               '',
@@ -22,6 +23,7 @@ export class AccionesService {
     "10. change percent":     '',
   };
 
+  //Variables
   public mostradorTabla = false;
   public mostrarCompra = false;
   public mostrarRegistro = false;
@@ -41,16 +43,26 @@ export class AccionesService {
   public listaCompras: Compras[] = [];
   private _tagsHistory: string[] = [];
 
-  private apiKey: string = 'PYCLROWFHP6YOJ3A';
+  //Informacion Api
   private serviceUrl: string = 'https://www.alphavantage.co';
   private function: string = 'GLOBAL_QUOTE';
+  private apiKey: string = 'PYCLROWFHP6YOJ3A';
 
+    /**
+   * @description
+   * Http para CRUD
+   * @param http
+   */
   constructor( private http: HttpClient) { }
 
   get tagsHistory(){
     return [...this._tagsHistory];
   }
 
+  /**
+   * @description
+   * Obtener fecha actual
+   */
   fechaActual(){
     const fechaActual: Date = new Date();
     this.anio = fechaActual.getFullYear();
@@ -61,7 +73,11 @@ export class AccionesService {
     this.segundo = fechaActual.getSeconds();
   }
 
-  private organizeHistory( tag: string){
+  /**
+   * Organiza y muestra ls ultimas 5 busquedas
+   * @param tag Ultima busqueda realizada
+   */
+  private organizarBusqueda( tag: string){
     tag = tag.toLowerCase();
 
     if (this._tagsHistory.includes(tag)){
@@ -72,9 +88,16 @@ export class AccionesService {
     this._tagsHistory = this._tagsHistory.splice(0,5);
   }
 
+  /**
+   * @description
+   * Consumo de api
+   * @param tag Busqueda realizada
+   */
   apiPeticion(tag: string): void{
+    console.log(this.listaAcciones);
+
     if(tag.length === 0) return;
-    this.organizeHistory(tag);
+    this.organizarBusqueda(tag);
 
     const params = new HttpParams()
     .set('function', this.function)
@@ -83,12 +106,17 @@ export class AccionesService {
 
 
     this.http.get<Busqueda>(`${ this.serviceUrl}/query`, { params: params })
-      .subscribe( resp => {
-        this.listaAcciones = resp['Global Quote'];
-        this.mostradorTabla = true;
-      });
+    .subscribe( resp => {
+      this.listaAcciones = resp['Global Quote'];
+      this.mostradorTabla = true;
+    });
   }
 
+  /**
+   * @description
+   * Calcula y guarda la informacion de la compra realizada
+   * @param volumen Numero de acciones a comprar
+   */
   calcularCompra(volumen:number){
     this.fechaActual();
     this.id = identificador();
@@ -98,6 +126,11 @@ export class AccionesService {
     this.mostrarCompra = true;
   }
 
+  /**
+   * @description
+   * Agrega la compra a la lista
+   * @param nuevaCompra Ultima compra realizada
+   */
   agregarCompra( nuevaCompra: Compras ): void {
     this.listaCompras.unshift(nuevaCompra);
     this.mostrarRegistro = true;

@@ -7,8 +7,6 @@ import { ComprarComponent } from './components/comprar/comprar.component';
 import { ListaCompraComponent } from './pages/lista-compra/lista-compra.component';
 import { TablaComprasComponent } from './components/tabla-compras/tabla-compras.component';
 
-
-
 @NgModule({
   declarations: [
     HomePageComponent,

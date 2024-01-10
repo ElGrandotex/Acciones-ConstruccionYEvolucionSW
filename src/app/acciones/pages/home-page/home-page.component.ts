@@ -9,12 +9,19 @@ import { Accion } from '../../interfaz/accion.interface';
 })
 export class HomePageComponent {
 
+    /**
+   * @description
+   * Constructor
+   * @param accionesService Consumo de servicio
+   */
   constructor( private accionesService: AccionesService){}
 
+  // Lista de informacion de acciones
   get listaAcciones(): Accion{
     return this.accionesService.listaAcciones;
   }
 
+  //Controlador de tabla
   get mostradorTabla(): boolean{
     return this.accionesService.mostradorTabla;
   }

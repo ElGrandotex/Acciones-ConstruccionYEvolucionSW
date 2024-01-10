@@ -1,4 +1,4 @@
-import { Component,ViewChild,ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AccionesService } from '../../services/acciones.service';
 
 @Component({
@@ -8,15 +8,25 @@ import { AccionesService } from '../../services/acciones.service';
 })
 export class SearchBoxComponent {
 
+  //Obtener informacion de busqueda
   @ViewChild('txtTagInput')
-  public tagInput!: ElementRef<HTMLInputElement>;
+  public tagBuscado!: ElementRef<HTMLInputElement>;
 
-  constructor(private accionesService: AccionesService) {}
+  /**
+   * @description
+   * Constructor
+   * @param accionesService Consumo de servicio
+   */
+  constructor(private accionesService: AccionesService) { }
 
-  searchTag(){
-    const symbol = this.tagInput.nativeElement.value;
+  /**
+   * @description
+   * Consumo de api con la busqueda realizada por el usuario
+   */
+  searchTag() {
+    const symbol = this.tagBuscado.nativeElement.value;
     this.accionesService.apiPeticion(symbol);
-    this.tagInput.nativeElement.value = '';
+    this.tagBuscado.nativeElement.value = '';
   }
 
 }

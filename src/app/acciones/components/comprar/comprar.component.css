@@ -18,14 +18,6 @@ input{
   color: #ccd3d9;
 }
 
-.boton{
-  color: #ccd3d9;
-  background-color: #273f4b;
-  border-radius: 13px;
-  border: none;
-  height: 40px;
-}
-
 .color:focus {
   color: #ccd3d9;
   outline: none;

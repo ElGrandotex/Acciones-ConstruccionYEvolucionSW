@@ -1,9 +1,11 @@
+<!-- Sidebar -->
 <div class="color border-right p-4" id="sidebar">
   <h2 class="text-center textos">Acciones</h2>
   <img src="/assets/EPN.png" alt="EPN" id="imagen">
   <h5 class="textos">Jose Verdezoto</h5>
   <hr class="textos">
 
+  <!-- Busquedas recientes -->
   <div class="list-group list-reset" *ngIf="mostradorTabla">
     <h6 class="textos">Busquedas Recientes</h6>
     <button *ngFor="let busqueda of busquedas" (click)="buscarAnterior(busqueda)" class="boton-color list-group-item list-group-item-action">

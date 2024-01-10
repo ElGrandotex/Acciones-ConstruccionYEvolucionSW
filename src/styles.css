@@ -1,4 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+.boton {
+  outline: 0;
+  grid-gap: 8px;
+  align-items: center;
+  background: 0 0;
+  border: 1px solid #273f4b;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 2px 10px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all .14s ease-out;
+  white-space: nowrap;
+  color: #273f4b;
+}
+
+.boton:hover {
+  box-shadow: 4px 4px 0 #273f4b;
+  transform: translate(-4px, -4px);
+}
+
+.boton:focus-visible {
+  outline-offset: 1px;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

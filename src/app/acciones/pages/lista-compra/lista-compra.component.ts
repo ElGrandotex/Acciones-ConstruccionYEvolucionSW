@@ -8,14 +8,21 @@ import { AccionesService } from '../../services/acciones.service';
 })
 export class ListaCompraComponent {
 
+  //Campos de compra
   protected nombreDatos = [
     'Codigo Compra',
     'Fecha Compra',
     'TOTAL',
   ]
 
+    /**
+   * @description
+   * Constructor
+   * @param accionesService Consumo de servicio
+   */
   constructor( private accionesService: AccionesService){}
 
+  //Informacion a utilizar
   get id(){
     return this.accionesService.id;
   }
