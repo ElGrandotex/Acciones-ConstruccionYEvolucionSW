@@ -47,6 +47,7 @@ export class AccionesService {
   private serviceUrl: string = 'https://www.alphavantage.co';
   private function: string = 'GLOBAL_QUOTE';
   private apiKey: string = 'PYCLROWFHP6YOJ3A';
+  // private apiKey: string = '0GEMQQC7TSVVE73V';
 
     /**
    * @description
@@ -103,7 +104,6 @@ export class AccionesService {
     .set('function', this.function)
     .set('symbol', tag)
     .set('apikey', this.apiKey)
-
 
     this.http.get<Busqueda>(`${ this.serviceUrl}/query`, { params: params })
     .subscribe( resp => {
