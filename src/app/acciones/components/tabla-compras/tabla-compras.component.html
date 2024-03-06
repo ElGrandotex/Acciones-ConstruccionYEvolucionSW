@@ -13,7 +13,7 @@
         <th mat-sort-header="DiferenciaPorcentaje"><strong> Cambio </strong></th>
         <th mat-sort-header="Diferencia"><strong> Ganancia/Perdida </strong></th>
       </tr>
-      <tr *ngFor="let compra of listaComprasOrdenada || listaComprasRealizadas">
+      <tr *ngFor="let compra of listaComprasOrdenada || listaComprasRealizadas" class="text-center">
         <td>{{ compra.Nombre }}</td>
         <td>{{ compra.Id }}</td>
         <td>{{ compra.Fecha }}</td>

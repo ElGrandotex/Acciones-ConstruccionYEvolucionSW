@@ -30,6 +30,7 @@ export class ComprarComponent {
    this.accionesService.calcularCompra(volumen);
    this.accionesService.calcularDeficit(precio);
     this.volumen.nativeElement.value = '';
+    this.precio.nativeElement.value = '';
 
     const nuevaCompra: Compras = {
       'Id': this.accionesService.id,
