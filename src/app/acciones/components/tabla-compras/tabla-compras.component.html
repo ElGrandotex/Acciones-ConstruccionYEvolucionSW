@@ -1,22 +1,28 @@
 <!-- Tabla de compras realizadas -->
 <div class="container contenedor">
-  <table class="custom-table table-bordered">
+  <table matSort (matSortChange)="sortData($event)" class="custom-table table-bordered">
     <tbody class="text-center textos">
       <tr>
-        <td><strong> Nombre </strong></td>
-        <td><strong> Id </strong></td>
-        <td><strong> Fecha </strong></td>
-        <td><strong> PrecioCompra </strong></td>
-        <td><strong> Volumen </strong></td>
-        <td><strong> Total </strong></td>
+        <th mat-sort-header="Id"><strong> Nombre </strong></th>
+        <th mat-sort-header="Nombre"><strong> Id </strong></th>
+        <th mat-sort-header="Fecha"><strong> Fecha </strong></th>
+        <th mat-sort-header="PrecioCompra"><strong> Precio Compra </strong></th>
+        <th mat-sort-header="Volumen"><strong> Volumen </strong></th>
+        <th mat-sort-header="Total"><strong> Total </strong></th>
+        <th mat-sort-header="PrecioActual"><strong> Precio Actual </strong></th>
+        <th mat-sort-header="DiferenciaPorcentaje"><strong> Cambio </strong></th>
+        <th mat-sort-header="Diferencia"><strong> Ganancia/Perdida </strong></th>
       </tr>
-      <tr *ngFor="let compra of listaComprasRealizadas">
+      <tr *ngFor="let compra of listaComprasOrdenada || listaComprasRealizadas">
         <td>{{ compra.Nombre }}</td>
         <td>{{ compra.Id }}</td>
         <td>{{ compra.Fecha }}</td>
-        <td>{{ compra.PrecioCompra }}</td>
+        <td>${{ compra.PrecioCompra }}</td>
         <td>{{ compra.Volumen }}</td>
-        <td>{{ compra.Total }}</td>
+        <td>${{ compra.Total }}</td>
+        <td>${{ compra.PrecioActual }}</td>
+        <td>{{ compra.DiferenciaPorcentaje }}%</td>
+        <td>${{ compra.Diferencia }}</td>
       </tr>
     </tbody>
   </table>

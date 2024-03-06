@@ -6,6 +6,7 @@ import { ListComponent } from './pages/list/list.component';
 import { ComprarComponent } from './components/comprar/comprar.component';
 import { ListaCompraComponent } from './pages/lista-compra/lista-compra.component';
 import { TablaComprasComponent } from './components/tabla-compras/tabla-compras.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TablaComprasComponent } from './components/tabla-compras/tabla-compras.
     TablaComprasComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSortModule
   ],
   exports: [
     HomePageComponent,

@@ -1,24 +1,23 @@
 <!-- Ingreso de numero de acciones a comprar -->
+<!-- *ngIf="mostrarInput" -->
 <div *ngIf="mostrarInput">
   <div class="container contenedor p-2">
-    <input
-      type="number"
-      class="form-control color"
-      placeholder="Número de acciones"
-      #volumen
-      min="0"
-    >
-    <div class="p-2">
-      <button (click)="comprar()" class="boton">
-        Realizar Compra
-      </button>
-    </div>
+    <input type="number" class="form-control color" placeholder="Número de acciones" #volumen min="0">
+  </div>
+  <div class="container contenedor p-2">
+    <input type="number" class="form-control color" placeholder="Precio" #precio min="0">
+  </div>
+  <div class="container contenedor p-2">
+    <button (click)="comprar()" class="boton">
+      Realizar Compra
+    </button>
   </div>
 </div>
 
 <!-- Informacion de la compra -->
-<acc-lista-compra *ngIf="mostrarCompra"></acc-lista-compra>
+<!-- <acc-lista-compra *ngIf="mostrarCompra"></acc-lista-compra> -->
 
 <!-- Lista de compras realizadas -->
 <h5 class="textos p-4" *ngIf="mostrarRegistro">Compras Realizadas</h5>
 <acc-tabla-compras *ngIf="mostrarRegistro"></acc-tabla-compras>
+<!-- *ngIf="mostrarRegistro" -->

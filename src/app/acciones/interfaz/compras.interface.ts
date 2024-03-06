@@ -2,7 +2,10 @@ export interface Compras {
   'Id': string;
   'Nombre': string;
   'Fecha': string;
-  'PrecioCompra': string;
+  'PrecioCompra': number;
   'Volumen': number;
-  'Total': string;
+  'Total': number;
+  'PrecioActual': string;
+  'DiferenciaPorcentaje': string;
+  'Diferencia': string;
 }

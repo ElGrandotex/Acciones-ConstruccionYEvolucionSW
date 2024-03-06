@@ -13,25 +13,35 @@ export class ComprarComponent {
   @ViewChild('volumen')
   public volumen!: ElementRef<HTMLInputElement>;
 
+  // Numero de acciones a comprar ingresadas por el usuario
+  @ViewChild('precio')
+  public precio!: ElementRef<HTMLInputElement>;
+
   // constructor
   constructor(private accionesService: AccionesService) { }
 
   /**
-  * @description
+   * @description
   *Calcula el valor de la compra y agrega la compra a la lista de acciones antes compradas
   */
-  comprar() {
-    const volumen = parseFloat(this.volumen.nativeElement.value);
-    this.accionesService.calcularCompra(volumen);
+ comprar() {
+   const volumen = parseFloat(this.volumen.nativeElement.value);
+   const precio = parseFloat(this.precio.nativeElement.value);
+   this.accionesService.calcularCompra(volumen);
+   this.accionesService.calcularDeficit(precio);
     this.volumen.nativeElement.value = '';
 
     const nuevaCompra: Compras = {
       'Id': this.accionesService.id,
       'Nombre': this.accionesService.listaAcciones['01. symbol'],
       'Fecha': this.accionesService.fechaCompra,
-      'PrecioCompra': parseFloat(this.accionesService.listaAcciones['05. price']).toFixed(2),
+      'PrecioCompra': precio,
       'Volumen': volumen,
-      'Total': this.accionesService.valor.toFixed(2)
+      'Total': precio*volumen,
+      // 'Total': this.accionesService.valor.toFixed(2),
+      'PrecioActual': parseFloat(this.accionesService.listaAcciones['05. price']).toFixed(2),
+      'DiferenciaPorcentaje': this.accionesService.deficitPor.toFixed(2),
+      'Diferencia':  this.accionesService.deficit.toFixed(2)
     };
 
     this.accionesService.agregarCompra(nuevaCompra);

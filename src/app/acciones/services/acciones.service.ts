@@ -30,6 +30,8 @@ export class AccionesService {
 
   public id: string = '';
   public valor = 0;
+  public deficitPor = 0;
+  public deficit = 0;
 
   private anio = 0;
   private mes = 0;
@@ -95,7 +97,6 @@ export class AccionesService {
    * @param tag Busqueda realizada
    */
   apiPeticion(tag: string): void{
-    console.log(this.listaAcciones);
 
     if(tag.length === 0) return;
     this.organizarBusqueda(tag);
@@ -134,5 +135,19 @@ export class AccionesService {
   agregarCompra( nuevaCompra: Compras ): void {
     this.listaCompras.unshift(nuevaCompra);
     this.mostrarRegistro = true;
+  }
+
+  /**
+   * @description
+   * Comparar precio
+   * @param precioCompra
+   */
+  calcularDeficit( precio: number ): void {
+    const precioActual = parseFloat(this.listaAcciones['05. price']);
+    //En dolares
+    this.deficit = precio - precioActual;
+    this.deficit.toFixed(2);
+    //En porcentaje
+    this.deficitPor = ((precio/precioActual)-1) * 100;
   }
 }
