@@ -56,7 +56,11 @@ export class AccionesService {
    * Http para CRUD
    * @param http
    */
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient) {
+    this.cargarInformacion();
+    console.log('Carga de informacion');
+
+  }
 
   get tagsHistory(){
     return [...this._tagsHistory];
@@ -89,6 +93,7 @@ export class AccionesService {
 
     this._tagsHistory.unshift(tag);
     this._tagsHistory = this._tagsHistory.splice(0,5);
+    this.guardarInformacion();
   }
 
   /**
@@ -140,7 +145,7 @@ export class AccionesService {
   /**
    * @description
    * Comparar precio
-   * @param precioCompra
+   * @param precio precio de compra
    */
   calcularDeficit( precio: number ): void {
     const precioActual = parseFloat(this.listaAcciones['05. price']);
@@ -150,4 +155,33 @@ export class AccionesService {
     //En porcentaje
     this.deficitPor = ((precio/precioActual)-1) * 100;
   }
+
+  /**
+   * @description
+   * Persistencia de la informacion
+   * Guarda en cache
+   */
+  private guardarInformacion():void{
+    localStorage.setItem('historial', JSON.stringify(this._tagsHistory));
+    localStorage.setItem('compras', JSON.stringify(this.listaCompras))
+  }
+
+  /**
+   * @description
+   * Persistencia de la informacion
+   * Guarda en cache
+   */
+  private cargarInformacion():void{
+    if (!localStorage.getItem('historial')) return;
+    if (!localStorage.getItem('compras')) return;
+
+    this._tagsHistory = JSON.parse(localStorage.getItem('historial')!);
+    console.log(this._tagsHistory);
+
+    this.listaCompras = JSON.parse(localStorage.getItem('compras')!);
+    console.log(this.listaCompras);
+
+  }
+
+
 }
