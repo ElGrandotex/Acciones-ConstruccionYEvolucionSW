@@ -57,7 +57,7 @@ export class AccionesService {
    * @param http
    */
   constructor( private http: HttpClient) {
-    this.cargarInformacion();
+    this.cargarInformacionBusqueda();
     console.log('Carga de informacion');
 
   }
@@ -93,7 +93,7 @@ export class AccionesService {
 
     this._tagsHistory.unshift(tag);
     this._tagsHistory = this._tagsHistory.splice(0,5);
-    this.guardarInformacion();
+    this.guardarInformacionBusqueda();
   }
 
   /**
@@ -140,6 +140,7 @@ export class AccionesService {
   agregarCompra( nuevaCompra: Compras ): void {
     this.listaCompras.unshift(nuevaCompra);
     this.mostrarRegistro = true;
+    this.guardarInformacionCompras();
   }
 
   /**
@@ -161,8 +162,16 @@ export class AccionesService {
    * Persistencia de la informacion
    * Guarda en cache
    */
-  private guardarInformacion():void{
+  private guardarInformacionBusqueda():void{
     localStorage.setItem('historial', JSON.stringify(this._tagsHistory));
+  }
+
+  /**
+   * @description
+   * Persistencia de la informacion
+   * Guarda en cache
+   */
+  private guardarInformacionCompras():void{
     localStorage.setItem('compras', JSON.stringify(this.listaCompras))
   }
 
@@ -171,7 +180,7 @@ export class AccionesService {
    * Persistencia de la informacion
    * Guarda en cache
    */
-  private cargarInformacion():void{
+  private cargarInformacionBusqueda():void{
     if (!localStorage.getItem('historial')) return;
     if (!localStorage.getItem('compras')) return;
 
